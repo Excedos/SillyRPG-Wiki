@@ -491,6 +491,7 @@
 
     <script>
         // If the Wiki and bot API use different domains, set this global before this script:
+        // Default backend URL matches the app name in fly.toml. Override this global if you deploy elsewhere.
         // window.SILLYRPG_BOT_STATUS_API_URL = "https://YOUR-BACKEND-HOST/api/bot-status";
         (() => {
             const label = document.getElementById('bot-status-label');
@@ -498,7 +499,7 @@
             if (!label || !dot) return;
 
             // GitHub Pages is static; configure this only after the bot backend is hosted.
-            const explicitUrl = window.SILLYRPG_BOT_STATUS_API_URL || '';
+            const explicitUrl = window.SILLYRPG_BOT_STATUS_API_URL || 'https://sillyrpg-main.fly.dev/api/bot-status';
             const endpoint = explicitUrl.trim();
             const styles = {
                 online: { text: 'Online', color: 'text-green-400', pulse: true },
